@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.4//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hospital.dao.DeptDao">
+    <insert id="insert" parameterType="Dept" useGeneratedKeys="true">
+        INSERT INTO dept (category_id, `name`, create_time, update_time) VALUES(#{category_id}, #{name}, #{create_time}, #{update_time})
+    </insert>
+
+    <update id="update" parameterType="Dept">
+        UPDATE dept SET category_id = #{category_id}, `name` = #{name}, update_time = #{update_time} WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM dept WHERE id = #{id}
+    </delete>
+
+    <select id="selectByCategoryId" parameterType="Long" resultType="Dept">
+        SELECT * FROM dept WHERE category_id = #{category_id}
+    </select>
+
+    <select id="selectById" parameterType="Long" resultType="Dept">
+        SELECT * FROM dept WHERE id = #{id}
+    </select>
+</mapper>
